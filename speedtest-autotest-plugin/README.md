@@ -10,4 +10,4 @@ input autotest command can run the plugin
 execute command "npm run start", start react app, can debug ui change
 
 # Plugin Screenshot
-![plugin screenshot](https://github.com/SpeedTest-AI/speedtest-autotest/blob/main/static/home.png)
+![plugin screenshot](https://github.com/tlqiao/speedtest/blob/main/speedtest-autotest-plugin/static/home.png)
