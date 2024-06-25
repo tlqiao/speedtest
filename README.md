@@ -13,4 +13,4 @@ Speedtest is a suite of tools primarily designed to enhance the efficiency of te
 - **Speedtest-locator-plugin:** A browser plugin that calls the interface of speedtest-bot to generate UI test locators based on page content.
 
 
-[中文Readme]()
+[中文Readme](https://github.com/tlqiao/speedtest/blob/main/README-chinese.md)
