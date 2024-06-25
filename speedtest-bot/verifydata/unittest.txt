@@ -1,0 +1,17 @@
+source code
+example1:
+public class PersonService {
+    public Person find(final PersonRequest request) {
+        if (request.getName().equals("James")) {
+            Person person = new Person("Merson", "James", BigDecimal.TEN);
+            person.setSalary(SalaryCalculate.calculate(person.getSalary()));
+            TimeUtil.sleep(5000);
+            return person;
+        }
+        return new Person("None", "None", BigDecimal.ZERO);
+    }
+}
+
+
+
+example2:

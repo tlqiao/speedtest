@@ -1,0 +1,22 @@
+
+requirement
+
+
+There is a login feature that includes username/password input fields and a login button. The rules for the login feature are as follows:
+
+The username should be 6-10 characters long, including both 6 and 10 characters.
+The username should consist of characters a-z, A-Z, and numbers 0-9.
+The username cannot be empty and should not contain spaces or special characters.
+The password input field follows the same rules as the username input field.
+When the correct username and password are entered, and the login button is clicked, the login is successful.
+When an incorrect username or password is entered, and the login button is clicked, the system displays the message 'The username or password you entered is incorrect.
+
+
+有一个登录功能，包括用户名/密码输入字段和登录按钮。登录功能的规则如下：
+
+用户名应为6到10个字符长，包括6和10个字符。
+用户名应由a-z、A-Z和数字0-9组成。
+用户名不能为空，且不应包含空格或特殊字符。
+密码输入字段遵循与用户名输入字段相同的规则。
+当输入正确的用户名和密码，然后点击登录按钮时，登录成功。
+当输入不正确的用户名或密码，然后点击登录按钮时，系统显示消息：“您输入的用户名或密码不正确。

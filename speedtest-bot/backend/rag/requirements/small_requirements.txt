@@ -1,0 +1,524 @@
+Introduction
+The existing Custody and Securities system (CSS-HK) provides clients with local custody services, including execution of corporate actions, settlement and transactions etc. However, BOC realizes that many customers have global operations and require a more comprehensive solution to support their needs. The cash portfolio and fund management of asset management is a new function with the development of business in recent years. BOC needs a new system for helping them to provide global custody services as well as cash forecasting and cash analysis services with global operations. Therefore, a new Custody and Clearing Platform – Cloud (CSS-CL) is to be developed for supporting global cash flows management and cash forecasting of their clients. It can provide a more effective way to BOC clients for making financial decisions and manage their cash portfolios efficiently.
+
+The system is expected to serve the custody account of external parties (i.e. BOCIPT). In Phase 1, only customers selected will receive CSS-CL Cash Management Services. At the initial stage, the system provides bank statement records, cash reconciliation reports, and cash overdue / projection reports, while customers will perform follow-up operations and daily cash operations.
+
+In addition to the above, the system should also provide cash forecasts based on historical transactions and trends, allowing customers to predict future cash positions and make their decisions, while providing services in a simplified and user-friendly manner, becoming a comprehensive and complete Custody Management system.
+
+The Clearing and Custody Platform – Cloud (CSS-CL) is designed to facilitate the cash management for the custody accounts. It helps to keep track of a series of processes and manage custody accounts in simplified way.
+-	Maintain Client Account and Custody Account Information 
+-	Automation of Bank Balance and Bank Transactions Uploading from BOC Core Bank System (CBL-HK)
+-	Automation of Bank Balance and Bank Transaction Uploading from SWIFT  (RMC-HK)
+-	Automation of Cash Transaction Uploading from CSS-HK
+-	Automation of Cash Transaction Uploading from client via FTG-HK
+-	Automation of Bank Book and Custodian Book Reconciliation 
+-	Automation of Job Notification in Dashboard including Exception Reminder, Outstanding Task List or etc 
+-	Provide the Projection Adjustment Function for adjust the status of overdue transactions
+-	Generation of Client Cash Projection Report, Cash Management Report or etc
+ 
+System Name 
+Custody and Clearing Platform – Cloud (CSS-CL) is connected to different systems for facilitating their daily operation and below is the summary list for showing the System Code and their system name. 
+
+	System Code	System Name
+1.		CSS-CL	Custody and Clearing Platform – Cloud 
+2.		CBL-HK	Core Banking Local Supporting System
+3.		CSS-HK	Custody & Securities System
+4.		FTG-HK	File Transfer Gateway System
+5.		FXS-HK	Foreign Exchange System 
+6.		RMC-HK	Regional SWFIT Message Channel Platform
+7.		UMS-HK	User Management System
+
+
+How to Read the Document
+For each function described in this document, detail functional description along with following items is provided.
+	Function Name
+	Function ID
+	Description of the function
+	Screen Layout and Name
+	Screen Field Specification (with Field Validation)
+	Event Specification (if any)
+	Record Validation Specification (if any)
+
+[Note : For Function Name, Function ID, Description of the function, Screen Layout and Name, it is included in Chapter 3 Function. For Screen Field Specification, Event Specification and Record Validation Specification, it is included in Chapter 4 Function Field List and Validation] 
+
+Screen Field Specification
+Along with each screen layout, field specification is followed. The items included in the specification are described in below table.
+Item	Description
+No.	Field No.
+Field Name	Field label appears on screen
+Type	Data Type and Length of the field
+Req.	Attribute of the field determine whether it is a mandatory one or not
+Description	Meaning and detail description of the field and its presentation (screen control type) on screen. For calculation fields, the formula will include here also. If screen control type is not specified, it means that the field is presented in Textbox control.
+Validation ID	ID of validation on the field
+It could be referenced in either Field Validation or Record Validation Specification.
+
+Legends of Data Type:
+Data Type	Meanings	Default Display Format*
+Varchar(x)	String field with maximum x alphanumeric characters long for English characters or x / 3 for Chinese characters.  	Left justified
+Number(x)	Integer number field with x digits (with 1000 separator (,))	Right justified
+Number(x,y)	Number field with decimals, having (x - y) digits before and y digits after decimal point
+(with 1000 separator (,))	Right justified
+
+Shown in -9,999,999.99 OR
+Shown in (9,999,999.99) for negative value [Note : It will be specified in field description]
+Date	Date Field	Shown in YYYY/MM/DD format
+Datetime	Field with date and time	Shown in YYYY/MM/DD HH:MI:SS format
+Note:
+* 	Fields are displayed in default format according to their data type unless format is explicitly stated Field Description.
+
+Legends of Req. Item:
+Req.	Description
+Y	Mandatory input field
+N	Optional input field
+D	Display field
+S	Display field and which value is generated by system
+P	Protected from edit after save
+*	Auto-capitalize on input data
+
+Screen Control Type:
+
+Control Type	Description
+Textbox	Normal editbox for data input or display
+Checkbox	A two-state option, either checked or unchecked
+Option button	A group of options that user can select only one among them
+Fixed Dropdown List	A dropdown list with system defined values for user selection
+In the dropdown list, only description is shown and the system keeps the code of the selected item.
+Pop-up Code List	A pop-up selection list with user-defined options for user selection
+In the pop-up list, code and description are shown and the list is normally sorted by description. The selected code is displayed on the field.
+Button	A Command button for triggering an action or a process
+
+Event Specification
+Along with each screen layout, event specification is followed for describing the process on those buttons in the screen. The items included in the specification are described in below table.
+
+Item	Description
+Event	Button Name
+Action	Detail description of the process(es) or action taken when the button is pressed.
+
+Field Validation Specification
+Along with each screen layout, field validation specification is followed for describing validations on screen fields. The items included in the specification are described in below table.
+
+Item	Description
+Validation ID	ID of the validation that would be referenced in “Validation ID” column in field specified.
+Type	Type of Validation, i.e. ‘E’ – Error, ‘W’ – Warning
+Related Field	Related field for the validations
+Validation	Validation details
+Message ID	ID of message that is prompted when the validation is failed
+
+Record Validation Specification
+Along with each screen layout, record validation specification is followed for describing validations on records. The items included in the specification are described in below table.
+
+Item	Description
+Validation ID	ID of the validation that would be referenced in “Validation ID” column in field specified.
+Type	Type of Validation, i.e. ‘E’ – Error, ‘W’ – Warning
+Validation	Validation details
+Message ID	ID of message that is prompted when the validation is failed
+
+Maker-Approver Processing
+Process Overview
+The maintenance functions in the Custody and Clearing Platform - Cloud (CSS-CL) can be classified into two categories: -
+1)	Single level maintenance
+2)	2-level Marker-Approver maintenance
+
+The records for the ‘Single Level Maintenance’ functions will be effective immediately after save and no approval action is required.  However, for the 2-level maker-approver maintenance functions, the record is treated as ‘Pending for approve’ after maker submission and senior user’s approval is necessary to make it effective.  
+
+Maker-Approver (2-level) process is a kind of security checking. This process makes sure that information is approved by one/two parties before going to public within the organization. 
+
+2-level process involves 2 different stages, Make and Approve. After creation, maker should submit the record for seeking the approval from approver. If the transaction amount does not reach the Dual Approval Limit defined in System Control Function, only one approver’s approval is needed. However, if the transaction amount reaches the Dual Approval Limit, dual approval procedure is required. It means two approver’s approval are needed. At the same time, approver need to type the transaction Currency and Amount in message box to ensure the amount has been verified. 
+
+[Note : Maker, Approver(1) and Approver(2) must be different users.]  
+带补充
+Maintenance Status
+
+For all Maker/Approver processing functions, a Maintenance Status will be kept with the following values:
+
+Status	Description
+Pending 	Record is still under maintenance and not yet submit for approval 
+Pending for Approve
+Maker submitted record for seeking approval 
+Approved	Approved record
+[Note : Record with Approved Status is the effective one] 
+Rejected	Approver rejected the record to Maker for follow up
+
+
+In Maker-Approver functions, the following buttons are provided. 
+
+
+Case	Action User	Action Button	Description 
+When Maker creates a new record OR modify an existing record 	Maker	Summary Screen  
+		Add	Create a new record
+		Edit	Amend the existing record
+		Detail Screen
+		Save 	Save Record but without submit the record for seeking approval
+		Submit	Submit the record for approval
+When approver approve/reject the record	Approver	Summary Screen
+		Approve 	Approver can select multiple records and approve it at once
+		Detail Screen
+		View Original	View Original Record (i.e. the data Image before modification) 
+		Approve 	Approve the record 
+		Reject 	Rejected the record to Maker for follow up
+When Maker follow up a rejected record	Maker	Summary Screen
+		Edit 	Amend the rejected record
+		Detail Screen
+		Save	Save Record but without re-submit the record for seeking approval
+		Submit	Re-submit the record for approval
+		Withdraw	Withdraw the record 
+
+When the record is saved, the Maintenance Status is defaulted as ‘Pending’.  When ‘Submit’ button is pressed, the maintenance status of the record will be changed from ‘Pending’ to ‘Pending for Approve’ (2-level).  At that time, the original record can no longer be retrieved using the Maintenance function. User is only allowed to view this original record information through ‘View Original’ button.  Instead, the approver can now retrieve the ‘Pending for Approve’ record to approve or reject the details using the corresponding Approval function from dashboard page.  If error is found, he/she can press ‘Reject’ button to change the status from ‘Pending for Approve’ to ‘Rejected’ so that the maker can amend the record using the maintenance function again. On the other hand, if there is no error found, the approver can press ‘Approve’ button to indicate the confirmation of approval process.  And then, the maintenance status will be changed from ‘Pending for Approval’ to ‘Approved’ which also confirm the effectiveness of the record. 
+
+For detail 2-level Maker-Approver processing function list, please refer to Chapter 2.3 Function Inventory 
+
+Below are the screens for illustrate the maker-approver process. 
+(a)	Maker Submit the Change Request for seeking approval 
+this is a user interface screenshot for the Custody and Clearing Platform of Bank of China (Hong Kong). The interface displays areas for inputting and operating information related to cash management, cash operations, channel/report, and projection adjustments. Here is a detailed description of the content displayed in the image:
+
+Top Menu Bar:
+
+The bank name is displayed as "Bank of China (Hong Kong)."
+The platform name is indicated as "Custody and Clearing Platform."
+User name and time information is shown as "H, U013 Chan Tai Man 2024/01/01 GMT+08:00," indicating that the current logged-in user is Chan Tai Man, with a login time of January 1, 2024, in the GMT+08:00 time zone.
+Operation buttons: "合" and "Logout" are present, representing options to collapse the menu and log out, respectively.
+Left Navigation Bar:
+
+Multiple navigation options are provided, including "Cash Management," "Cash Operation," "Channel/Report," and "Projection Adjustment."
+Transaction Information Input Area:
+
+Client Information:
+Client Number (CIN): 7200004.
+Client Short Name: ABC Company Limited.
+Account Information:
+Cash Account Number: 012-875-06008200.
+Custody Account Number: 012-228-71025200.
+Custody Account Short Name: [Trading Account 1.
+Transaction Date Information:
+Instruction Date: 2024/02/27.
+Value Date: 2024/02/27.
+Projected Value Date: 2024/02/27.
+Transaction Type and Currency Information:
+Function Type: 19999 (likely a code or identifier).
+Currency: HKDQ (Hong Kong Dollars).
+Amount and Class Code:
+Amount: (No specific amount is displayed).
+Class Code: DR/CR (Debit/Credit).
+Remarks and Other Information:
+Remark: (No specific content is displayed).
+Construction Date: (No specific content is displayed).
+FX Type: (No specific content is displayed).
+FX Pair: (No specific content is displayed).
+FX Rate: (No specific content is displayed).
+Deposit Date: (No specific content is displayed).
+Maturity Date: (No specific content is displayed).
+Time deposit Interest rate: (No specific content is displayed).
+Time deposit: (No specific content is displayed).
+Bottom Operation Buttons:
+
+The interface provides "Submit," "Save," "Back," and "Exit" buttons, allowing users to submit transactions, save drafts, go back to the previous step, or exit the current operation.
+Overall, the interface is a transaction information input and operation interface that allows users to enter and manage detailed information related to cash transactions and provides necessary operation options for users to process transactions. The interface design focuses on functionality and convenience of user operations.
+(b)	Approver approve the record (Single Approval Process)
+(c)	Approver reject the record
+(d)	Maker process ‘Rejected’ record – Allow to Re-submit/Withdraw the record
+(e)	Approver approve the record (Dual Approval Process) – Need type in the Currency of Transaction and Transaction Amount manually
+General Feature 
+Change Highlight for Approval
+For maker-approver process, the new/modified field values will be marked with a yellow background color. It helps approver know the modified field values for verification easily.  
+If there is any field changed under a tab page, the tab page background will be marked with yellow background color. 
+If any record is to be added/deleted in table grid, the background color of ‘Record Status’ will be marked with yellow background so that user can know which record is being added/deleted. 
+
+Combo box 
+There are 2 types of combo box. 
+
+(1)	With paging – If the number of records is large, CSS-CL will use the combo box (with paging). User can make use of searching feature provided in Combo box to find out their target common code. 
+(2)	Without paging – If the number of records is not large, CSS-CL will use the combo box (without paging) so that user can retrieve all common code at once in faster mode. 
+Date picker
+Date picker allows users to enter a date either through text input, or by choosing a date from the calendar. 
+
+Drop Down List
+Drop down list allows the user to choose one value from a list by clicking the menu.
+
+Hints
+Field hints provide a brief description of the field. When mouse-over the field or exception found after record submission, Hints will be shown on the screen. 
+
+Menu Bar
+System Menu is placed in top of the screen. Only granted functions will be shown in menu bar. Below is the full system menu.  
+The main menu options are repeated from the previous image, providing context and allowing for navigation to different modules such as "Cash Management," "Cash Operation," "Channel / Report," "Client Maintenance," "Settlement," "System Admin," and "User Admin."
+
+Main Menu Options:
+Cash Management: This module likely deals with the oversight and administration of cash balances, liquidity, and short-term investments.
+Cash Operation: This could be a sub-module under Cash Management, focusing on the execution of cash transactions, such as transfers, deposits, and withdrawals.
+Channel / Report: This option may allow users to manage different channels of communication and generate reports related to cash operations and other financial activities.
+Client Maintenance: This module is probably for managing client information, including account details, contact information, and other relevant data.
+Settlement: This section is likely for processing and finalizing financial transactions, ensuring that all parties involved in a trade are paid or receive the agreed-upon securities.
+Static Data Maintenance: This could be for managing reference data that doesn't frequently change, such as exchange rates, holidays, or market data.
+System Admin: This module is for administering the system itself, including user permissions, system settings, and other administrative tasks.
+User Admin: This option may be for managing user accounts, roles, and access levels within the application.
+
+Sub-Menus and Additional Features:
+Bank Statement Reconciliation Overview: This feature might provide a summary or detailed view of bank statement reconciliation processes, allowing users to compare the bank's records with the system's records to ensure accuracy.
+Cash Transaction File Upload Status: This could be a status tracker for uploaded cash transaction files, indicating whether they are pending, processing, or completed.
+Dashboard: The dashboard likely offers an overview of key metrics and alerts, providing users with a quick snapshot of the system's status and any actions that may require attention.
+Incoming SWIFT Message: This feature is probably for managing and tracking SWIFT (Society for Worldwide Interbank Financial Telecommunication) messages received by the institution.
+Incoming Document Enquiry: This option may allow users to search for and view documents that have been received by the system.
+Outgoing Document Enquiry: This is likely for managing and tracking documents that have been sent out by the institution.
+Report Generator: This tool is probably for generating custom reports based on various criteria, such as transaction history, account balances, or performance metrics.
+Pending Approve: This section may list items or transactions that are awaiting approval from authorized users.
+Reject: This could be a list of items or transactions that have been rejected and require further action.
+Report Center: This feature might be a centralized location for accessing, generating, and managing reports.
+Locked By: This indicates which user has locked a particular record for editing or processing.
+Data Extractor: This tool is likely for extracting data from the system for analysis or migration purposes.
+Exception: This could be a list or notification area for any exceptions or anomalies detected within the system.
+Custody Account Maintenance: This option is probably for managing the details and settings related to custody accounts, which hold assets on behalf of clients.
+Static Data Maintenance Options:
+
+Instrument Code Maintenance: This option may allow users to manage and maintain the codes associated with financial instruments, such as stocks, bonds, or other securities.
+Common Code Maintenance: This feature could be for managing standard codes that are used across various functions within the system, such as transaction types or status indicators.
+Country/Region Maintenance: This option likely allows for the management of country and region data, which could be used for international transactions or client information.
+Custody Account: This option may be for managing data related to custody accounts, where assets are held on behalf of clients.
+Currency Table Maintenance: This feature is probably for managing the list of currencies used within the system, including exchange rates and other related data.
+FX Reference Rate Maintenance: This option allows for the management of foreign exchange reference rates, which are crucial for currency conversion and international transactions.
+Nominee Account Maintenance: This could be for managing data related to nominee accounts, which are accounts in the name of a nominee held for the benefit of the actual account owner.
+Order by: This option allows users to sort the data, possibly by function description or record status in ascending order.
+System Admin Menu:
+
+Client Report Scheduler Maintenance: This feature may enable the scheduling of automatic report generation for clients, allowing for regular updates on financial data.
+Job Execution Status: This option could provide information on the status of background jobs or processes running within the system.
+Job Scheduler: This tool likely allows for the scheduling of recurring system tasks or jobs.
+System Control: This option may provide overarching control settings for the system, such as user permissions, data access, and system operations.
+Open/Close SWIFT: This feature could manage the system's connection to SWIFT (Society for Worldwide Interbank Financial Telecommunication), allowing for the opening and closing of communication channels.
+System Date Maintenance: This option is probably for managing the system's date settings, which could include adjusting for holidays or time zone changes.
+Processing Holiday Maintenance: This feature may allow for the management of public holidays that affect system operations and transaction processing.
+FTGID Maintenance: This option could be for managing unique identifiers or codes related to financial transactions or products.
+User Admin Menu:
+
+User Profile Maintenance: This feature allows for the management of user profiles within the system, including personal information and contact details.
+Force User Logout: This option could provide a mechanism to forcibly log out users from the system, which might be necessary for security reasons or when a user's session is compromised.
+Role Maintenance: This option is likely for managing user roles and permissions, ensuring that users have the appropriate access levels to system functions and data.
+Role Function Assignment: This feature may enable the assignment of specific functions or tasks to user roles, defining their responsibilities and access rights within the system.
+Search and Navigation:
+
+The menu includes search fields for "Date From" and "To," which may be used to filter records or transactions within a specified date range.
+There is also a "Function" field, which could be a search or filter option for specific functions or transaction types within the system.
+The "Total Number of Tasks" is displayed, indicating the number of tasks that are currently pending or active within the system.
+
+Multiple Records in Table 
+For multiple records, system shows it into table grid so that user can view all key information in table format faster.  
+Pagination and Record Count:
+The image indicates that there are 25 records displayed per page, and there are a total of 4 pages, suggesting that the system is capable of managing a significant number of records.
+There is a "Go To" button, which may allow users to navigate to specific pages or records within the list.
+The total number of records is stated as 87, providing an overview of the database size for the user.
+Record Listing Headers:
+
+The headers of the record listing include "Operation Country," "Country/Region Code," "User Name," "Currency," "Status," "User ID," "Email," "M-Class," "Record Status," "Phone No.," "Approval Limit," and "Region Code." These headers suggest that the records contain detailed information about users or accounts, including their operational context, contact information, and account status.
+Record Details:
+
+Each record in the list contains specific details associated with an individual or an account. The details provided in the image for some records include:
+Operation Country/Country/Region Code: "HK," indicating that the operations are related to Hong Kong.
+User Name: Various names are listed, such as "CHAN SUI MAN," "CHEUNG KA KA," "LEE WAI MAN," etc.
+Email: Corresponding email addresses for each user are provided, all ending with "@excel.com.hk" or "@boc.com.hk," suggesting these are institutional emails.
+Currency: "HKD" is mentioned consistently, indicating Hong Kong Dollars as the currency associated with these records.
+Status: Some records are marked as "Active," while others are "Closed."
+Record Status: This field shows the current state of the record, with options like "Approved" and "Pending for Approve."
+Phone No.: Contact numbers are listed, all sharing the same prefix "852-21862888," which is a Hong Kong phone number.
+Approval Limit: This field displays monetary values, such as "10,000,000.0013" or "1000.00 13," likely indicating the approval limit for transactions or accounts.
+Region Code: The region code is also listed as "HK" for all records, aligning with the Operation Country.
+The record listing appears to be part of a user or account management system, where detailed information is organized and displayed for review, monitoring, or administrative actions. The system seems to be designed to handle a variety of data points, including operational details, contact information, and financial parameters, which are crucial for managing accounts within a financial context. The interface is structured to allow for efficient navigation and management of a large number of records.
+
+Parameter List
+Searching criteria & Report Generator criteria(after the report type is selected) can be saved into Parameter List and user can reuse it at any time. Parameter List includes the searching criteria, sorting order and no of records shown in one page. User can input their desired searching criteria in online function and press ‘Parameter List’ icon to add the current setting into their parameter list profiles. If they click it as ‘default’ one, system will auto-default it when user enter the corresponding function. 
+
+Selection of checkbox in Table Grid 
+When user press the SHIFT key in table grid, system will auto-check the checkbox from the current row till the row user release the SHIFT key.  
+
+Upload File
+User can upload file via drag and drop, preview the file being uploaded immediately. 
+
+Wild Card Search
+CSS-CL supports both exact match search and wildcard search 
+1)	Exact Match Search – Input your target value into searching field. 
+2)	Wildcard Search – Input your value with mixed with ‘%’
+
+Function
+Dashboard
+Function ID:	CSSCL_DASHB001
+Description:	The dashboard provides the entire picture of the account for which the user is responsible. All transactions that need to be processed will be displayed on the dashboard, including resolved issues, and pending issues, providing an easy-to-use way to monitor and track the completion of daily tasks. With the help of the dashboard, users can smoothly understand the list of tasks they need to work on, which ensures that the team is organized and focused on their responsibilities.
+
+The following is the information displayed on the dashboard:
+(1)	Exception Issues for follow up or issues need to be alerted (i.e. Bank Statement Missed, Cash Transaction File Missed, Reconciliation Failed) 
+(2)	Maker-Approver Processing Task 
+
+Automation of Tasks Generation 
+All tasks in dashboard are automatically generated from the system. The system divides all notifications into four categories, and the related classification and processing are as follows. 
+(1)	Maker-Approver Processing Task (Pending for Approve)
+(a)	Approver - Any user with corresponding approver right can process the ‘Pending for approve’ record. Approver can verify the records and decide to approve/reject it. It will show the pending for approve record with the changes highlighted in yellow by default, approver can press the “View Original” button to view the original record and revert back for comparison. 
+(2)	Maker - Any user with corresponding Add/Edit (maker) right can view the “Pending for approve” record so that maker can know the latest status. When the user double-clicks the record, CSS-CL will auto-navigate it to enquiry mode for user to view the record. Maker-Approver Processing Task (Rejected)
+All rejected records will be shown on the dashboard. Any user with corresponding maker/approver right can view the rejected record.
+(a)	Maker – any user with corresponding Add/Edit (maker) right can  double-clicks the rejected record (not just the maker who submitted the record initially), CSS-CL will auto-navigate it to maintenance mode for user to modify the record and re-submit it for seeking approval again. It shows last Maker & last Approver’s comments and previous ‘Pending for approve’ record, the previous changes that has been made will be highlighted in Yellow and maker can choose 1) further revise the record / temporarily save the current work and submit for approval again OR 2) press “Withdraw”, then the ‘Pending for approve’ record will be discarded and the record will keep as original and remain unchanged.
+(b)	Approver - When the user double-clicks the rejected record, CSS-CL will auto-navigate it to enquiry mode for user to view the record again. 
+(3)	Maker-Approver Processing Task (Approved)
+All approved records in current processing date will be shown on the dashboard for user reference. Any user with corresponding maker/approver right can view the approved record. After the day, CSS-CL will auto-remove the records which were approved in the current processing date from dashboard. 
+(a)	Any user with the corresponding Enquiry right cannot view the category list on the left-hand side of the dashboard. 
+(4)	Exception 
+(a)	When the CUTOFF time of Bank Statement is up but the system finds that CBS/SWIFT has not been received on time, CSS-CL will auto-generate an exception message into dashboard. Any user with the access right of ‘Bank Statement Reconciliation Overview’ function can view the exceptional record. When the user double-clicks this exception record, CSS-CL will auto-navigate user to ‘Bank Statement Reconciliation Overview’ function for follow up. For detail exception handling, please refer to Chapter 3.2.1 Bank Statement Reconciliation Overview. 
+
+SWIFT: If the bank statement is missing due to it is in holiday, CTS user should update the corresponding holiday record and press “Resume” for the corresponding SWIFT message in Incoming SWIFT Enquiry, then system will rerun the bank statement checking and the exception record in dashboard will be dismissed ? marked as Completed? 
+
+CBL & SWIFT: as CTS user is not supposed to adjust the record in system date maintenance or if external assigned bank is unable to provide bank statement on a working date due to special circumstance: 
+1)	Without transaction: in this case, the impact is minor, as the opening balance of next day is correct and there is no impact to the cash statement file provided on T and the reconciliation process of T+1.
+2)	With transaction: in this case, the opening balance of T+1 (custodian book) will be incorrect, CTS user can manual adjust the balance of custodian book by inserting (= upload file) a dummy cash transaction entry, to minimize the impact of cash projection.
+
+Note: this is a rare case. And the background process job: CBL file and SWIFT message job: support backdate 
+
+
+(a)	When the CUTOFF time of Cash Transaction File is up but the system finds that file has not been received on time or received the file with exception?, CSS-CL will auto-generate an exception message into dashboard. Any user with access right of the ‘Cash Transaction File Upload Status’ function can view the exception record. When the user double-clicks this exception record, CSS-CL will auto-navigate user to ‘Cash Transaction File Upload Status’ function for follow up. For detail exception handling, please refer to Chapter 3.2.2 Cash Transaction File Upload Status. 
+
+Note: Count blank file
+
+(b)	After receive the Bank Statement and all Cash Transaction Files, CSS-CL will reconcile the Internal Cash Account and Shadow Cash Account immediately. Any failure was found, CSS-CL will auto-generate an exception message into dashboard. Any user with the access right of ‘Bank Statement Reconciliation Overview’ function can view the exception record. When the user double-clicks this exception record, CSS-CL will auto-navigate user to ‘Bank Statement Reconciliation Overview’ function for follow up. For detail exception handling, please refer to Chapter 3.2.1 Bank Statement Reconciliation Overview. 
+
+Locked by / Completed Action 
+(1)	Record is being modified by another user
+(2)	Record has been modified/approved by another user 
+
+------------------------------------------------------------------------------------------------------
+Example for illustrate the 
+(1)	User A, B: Client Maint. - Maker
+(2)	User C1, C2: Client Maint. – Checker
+(3)	User D: Client Maint. – Enquiry
+
+Assume: User A – D don’t have any access permission for non-Client function group
+
+Dashboard: User A new / update / delete a client record and submit, then: 
+Item\ User	Client Maint. – Maker	Client Maint. – Checker (C1)	Client Maint – Checker (User C2)	Client Maint. – Enquiry
+Pending Approval – Single Approval
+(Client Maint.)	Y, read only	Y, approve	Y, approve	N 
+Pending Approval – Dual Approval and C1 approved it before 
+(Client Maint.)	Y, read only	Y, read only	Y, approve	N
+Pending Approval
+(non-Client Maint.)	N	N	N	N
+Rejected = pending resubmit
+(Client Maint.)	Y, edit	Y, read only	Y, ready only	N
+Rejected = pending resubmit
+(non-Client Maint.)	N	N	N	N
+Approved = completed
+(Client Maint.)	Y, read only	Y, read only	Y, ready only	N
+Approved = completed
+(non-Client Maint.)	N	N	N	N
+Note: N means the function on the category list (left-hand side) of dashboard page will not be appeared.  
+
+Below applies to all record in dashboard and all edit buttons in function page: 
+Maker: 
+(1)	Once a user (User A / C1) clicks the record for edit / approval, the record will be locked and if another user (User B / C2) attempts to click the record for edit / approval (allow to read only), a warning message will be prompted “This record is locked by <User ID>, <User Name>”. This applies to all records in dashboard and all edit buttons in function page. 
+(2)	This record will be released only if the user (User A / C1) clicks “exit” to the record or the session of the user (User A / C1) is time-out. 
+(3)	Locking Handling 
+(a)	If User A press “Exit” without changes / without save: 
+After the record is unlocked, another user (User B) can pick up the record. 
+(b)	If User A press “Save” before exit: 
+After the record is unlocked, another user (User B) clicks the record for edit, a warning message will be prompted” “This record was locked by <User ID>, <User Name>”, are you sure to take-over?”, if User B confirms, then User B will be the new handler / owner of the record (even press “Exit” without saved), user B is able to see all the changes that User A has been made before last saved (highlighted in Yellow). 
+
+While a maker / approver locks the records for edit / review, other maker / approver can still double-clicks the record to view the details. 
+
+Note to CTS user: Before submit, the maker (handler / owner) is responsible for the  all the changes of entire record that have been made (highlighted in Yellow), including the changes that made by previous user. 
+
+(4)	For the records under pending for approval / rejected on dashboard section, a button for user to view the before / after image of record will be appeared in the edit / approval page. User can press that button to view the original / changes (highlighted in yellow) of records. 
+(5)	If User D (enquiry) view the record that is pending for approval / pending for re-submit (rejected) through the function from Menu list, the record status on the search page shows “Pending for approval”, then User D client to view the record details, it shows the original data (last approval) only, the button (for viewing the original / changes) will not be appeared in this page. 
+------------------------------------------------------------------------------------------------------
+
+Color 
+(1)	Red – Exception and Rejected record is shown in RED for draw user’s attention 
+(2)	Green – Approved record is shown in GREEN 
+(3)	Background with Yellow  - All record with processing date is day T-1 is shown in Yellow Background 
+
+Refresh 
+In order not to affect the screen that user is viewing, CSS-CL will not automatically refresh the dashboard in idle. Users can 1) press the refresh icon, 2) press “Search” button or 3) user enter / back to dashboard page (by pressing submit / exit / approve / reject / home page….etc) to refresh all items in the category list under dashboard to obtain the latest information (including the record count on the left-top corner). The last refresh time will be displayed on the function bar for user reference. When user click the record for view / edit / approve, system will validate and check if the record is still valid first. If the record is no longer valid / picked up by another user, due to the screen is not refreshed, a warning message will be prompted “The record status has been changed, please refresh the dashboard page.”
+
+The statistic section shown on the left-top corner show the overall count based on the right of current user, not affected by the search result or the items user selected from category list. This section will be updated only if 1) user press “Refresh” button, 2) user press “Search” button or 3) user enter / back to dashboard page (by pressing submit / exit / approve / reject / home page….etc)
+
+Record flow
+#	Scenario	Menu list – function
+Record status	Dashboard – function
+Record status	Remarks
+1	Add new record #1 and editing without save	N/A	N/A, no record	
+2	User B view record #1	N/A	N/A, no record	
+2	User A save record #1 (in session)	Pending	N/A, no record	Locked by user A
+3	User B view record #1	Pending	N/A, no record	View last saved record
+4	User B press edit for record #1	Pending 	N/A, no record	Rejected - Locked by user A
+5	User A save record #1 (timeout / logout)	Pending	N/A, no record	Locked by user A
+6	User B view record #1	Pending 	N/A, no record	View last saved record (5)
+7	User B press edit for record #1	Pending 	N/A, no record	Ask if user B wants to take-over ?
+8	User B confirms to take-over 	Pending 	N/A, no record	User B = owner 
+Locked by user B
+9	User B rejects to take-over 	Pending 	N/A, no record	User A= owner 
+Locked by user A
+10	User B confirms to take-over and edit without save	Pending 	N/A, no record	User B = owner 
+Locked by user B
+11	User C (enquiry) view record #1	Pending 	N/A, no record	View last saved record (5)
+11	User B confirms to take-over and edit with save	Pending 	N/A, no record	User B = owner 
+Locked by user B
+12	User C view record #1	Pending 	N/A, no record	View last saved record (11)
+13	User B submits record #1	Pending Create	Pending approve	
+14a	User C (enquiry) view record #1 from menu list	Pending Create	N/A, no record	View last saved record (13)
+14b	User B wants to edit record #1 from menu list	Pending Create	Pending approve	??? Rejected
+14c	User A (maker) edit record #1 from menu list after user B logout	Pending Create	Pending approve	??? Rejected
+15	User D (checker) view record #1 from dashboard	Pending Create	Pending approve	
+16a	User D (checker) approve record	Approve	Approved	End point (1)
+	User C (enquiry) view record #1 from menu list	Approve	N/A, no record	View last saved record (13)
+16b	User D (checker) approve but dual approval is required	Pending Create	???	
+16b- 1	User E (checker) approve	Approve	Approved	End point (2)
+	User C (enquiry) view record #1 from menu list	Approve	N/A, no record	View last saved record (13)
+16c	User D (checker) approve but dual approval is required	Pending Create	???	
+16c- 1	User E (checker) reject	Pending Create	Rejected	
+16c-2	User F (maker) pick up and withdraw the record #1	N/A	???	End point (3)
+	User C (enquiry) view record #1 from menu list	Pending Create	N/A, no record	View last saved record (13)
+16d	User D (checker) reject record	Pending Create	Rejected	
+16d-1	User F (maker) pick up and withdraw the record #1	N/A	???	End point (4)
+	User C (enquiry) view record #1 from menu list	Pending Create	N/A, no record	View last saved record (13)
+16e	User D (checker) reject record	Pending Create	Rejected	
+16e-1	User F (maker) pick up and edit the record #1 without save	Pending Create	Rejected	
+16e-2	User G (maker) view the record #1 from dashboard	Pending Create	Rejected	View last saved record (13)
+16e-3	User G (maker) edit the record #1 from dashboard	Pending Create	Rejected	Locked by user F
+16e-4	User F (maker) pick up and edit the record #1 with save + (timeout / logout)	Pending Create	Rejected	
+16e-4	User G (maker) view the record #1 from dashboard 	Pending Create	Rejected	View last saved record (16e-4)
+16e-5	User G (maker) edit the record #1 from dashboard	Pending Create	Rejected	Ask if user G wants to take-over ?
+16e-6	User G confirms to take-over 	Pending Create	Rejected	User G = owner 
+Locked by user G
+16e-7	User G rejects to take-over 	Pending Create	Rejected	User F= owner 
+Locked by user F
+16e-8	User G confirms to take-over and edit without save	Pending Create	Rejected	User G = owner 
+Locked by user G
+16e-8	User G confirms to take-over and edit with save	Pending Create	N/A, no record	User G = owner 
+Locked by user G
+16e-9	User C view record #1	Pending Create	N/A, no record	View last saved record (16e-9)
+16e-10	User G submits record #1	Pending Create	Pending approve	
+16-11	User D (checker) approve record	Approve	Approved	End point (5)
+
+
+
+Screen (Dashboard - Description)
+This dashboard offers an overview of various operational aspects and allows users to manage and monitor different functions within the system. Here is a detailed description of the elements visible in the image:
+
+Dashboard Header:
+
+The header displays the name of the bank and the platform, "Bank of China (Hong Kong) Custody and Clearing Platform," indicating the service provider and the platform's purpose.
+Navigation Menu:
+
+The left side of the dashboard presents a navigation menu with options such as "Cash Management," "Cash Operation," "Channel / Report," "Client Maintenance," "Settlement," "Static Data Maintenance," "System Admin," and "User Admin." These options allow users to navigate through different sections of the platform to perform various tasks.
+Dashboard Information and Filters:
+
+The central part of the dashboard displays a list of records with filters and search options.
+The dashboard shows the last update time as "Refreshed as at 2024/01/01 06:07:01."
+There are filter options for "Date From," "To," and "Function," which likely allow users to specify a date range and function type for the displayed records.
+The "Record Status" filter allows users to view records based on their status, such as "Pending Approval," "Rejected," "Approved," etc.
+The "Order by" and "Search" options enable users to sort and find specific records within the list.
+Record Listing:
+
+The record listing displays various details about transactions or operations, including "Custody Account," "Custody Short Name," "Cash Account Number," "Value Date," "Currency," "Maker," "Appr1," "Appr2," and "Locked By."
+Each record seems to have a status, such as "Pending Approval," "Rejected," or "Approved," indicating the current state of the transaction or operation.
+Some records have a "Locked" status, showing who is currently editing or reviewing the record.
+The "Date and Time" column displays when the record was created or last modified.
+The "Function" column likely indicates the type of operation or transaction, such as "Projection Adjustment" or "Bank Statement."
+The "Currency" and "Amount" columns show the currency and the monetary value involved in the transaction.
+The "Maker" and "Appr1," "Appr2" columns likely represent the user who created the record and the approvers who need to approve it.
+Pagination:
+
+The dashboard indicates that there are 87 records in total and that the current page displays 25 records per page.
+There are options to "Go To" a specific page, and the current page is indicated (e.g., "Page 1 of 4 pages").
+The dashboard shows that 13 out of 87 records are selected, which may be for batch actions or further review.
+Overall, the dashboard provides a comprehensive view of the platform's operations, allowing users to efficiently manage and monitor various tasks and transactions. The interface is designed to enable users to quickly access and act on the information they need, with clear navigation and filtering options.

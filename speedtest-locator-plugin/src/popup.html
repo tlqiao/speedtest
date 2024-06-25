@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <title>Web Page Content Extractor</title>
+        <script src="popup.js"></script>
+        <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+        <h2>Gen UI Locators</h2>
+        <div class="flex-container">
+                <div class="flex-item">
+                        <label for="tool">Tool:</label>
+                        <select id="tool">
+                                <option value="cypress">Cypress</option>
+                                <option value="playwright">Playwright</option>
+                                <option value="appium webdriverio">WebdriverIO</option>
+                        </select>
+                </div>
+                <div class="flex-item">
+                        <label for="range">Range:</label>
+                        <select id="range">
+                                <option value="wholePage">WholePage</option>
+                                <option value="selectedPage">SelectedPage</option>
+                        </select>
+                </div>
+                <div class="flex-item">
+                        <label for="number">Number:</label>
+                        <select id="number">
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                                <option value="200">200</option>
+                                <option value="500">500</option>
+                                <option value="500">1000</option>
+                        </select>
+                </div>
+                <div class="flex-item">
+                        <label for="platform">Platform:</label>
+                        <select id="platform">
+                                <option value="android">Android</option>
+                                <option value="ios">IOS</option>
+                        </select>
+                </div>
+                <div>
+                        <button id="generate">Generate <div id="spinner" class="spinner" hidden> </div></button>
+                </div>
+        </div>
+        <div class="textarea-wrapper">
+                <div class="textarea-buttons">
+                        <button id="clear" class="little-button">Clear</button>
+                        <button id="copy" class="little-button">Copy</button>
+                </div>
+                <div>
+                        <textarea id="result" rows="20" cols="80"
+                                placeholder="Copy html source to here manually for selectedPage"></textarea>
+                </div>
+        </div>
+</body>
+
+</html>

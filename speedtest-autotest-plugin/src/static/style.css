@@ -1,0 +1,98 @@
+.container {
+        padding: 5px;
+        width: 95%;
+        height: 100%;
+        background-color: #1E1E1E;
+        display: flex;
+        flex-direction: column;
+}
+
+.dropdown-container {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+}
+
+.textarea-container {
+        margin-top: 10px;
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        position: relative;
+}
+
+.custom-textarea {
+        background-color: #1E1E1E;
+        width: calc(100% - 5px);
+        margin-bottom: 5px;
+        font-size: 10px;
+        margin-right: 5px;
+        height: 440px;
+        color: white;
+}
+
+.textarea-buttons {
+        position: absolute;
+        top: 5px;
+        right: 3px;
+        display: flex;
+        gap: 5px;
+}
+
+.textarea-button {
+        padding: 2px 4px;
+        cursor: pointer;
+        font-size: 7px;
+}
+
+.dropdown-item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1px;
+}
+
+.dropdown-item label {
+        margin-bottom: 2px;
+        color: white;
+}
+
+.action-container {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        padding-top: 2px;
+}
+
+.custom-button {
+        background-color: #1E1E1E;
+        color: white;
+        font-size: 12px;
+        padding: 5px;
+}
+
+.custom-label {
+        font-size: 12px;
+}
+
+.custom-select {
+        background-color: #1E1E1E;
+        font-size: 12px;
+        color: white;
+        border-radius: 2px;
+        width: 100%;
+}
+
+.custom-select .custom-option {
+        background-color: #1E1E1E;
+        color: white;
+}
+
+.custom-select .custom-option:checked {
+        background-color: #1E1E1E;
+}
+
+.custom-select .custom-option:hover {
+        background-color: #1E1E1E;
+}

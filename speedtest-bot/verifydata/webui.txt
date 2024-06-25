@@ -1,0 +1,83 @@
+
+
+<body>
+    <app-root ng-version="7.2.4">
+        <app-layout-header>
+            <nav class="navbar navbar-light">
+                <div class="container">
+                    <a class="navbar-brand" routerlink="/" href="/">conduit</a><!---->
+                    <ul class="nav navbar-nav pull-xs-right">
+                        <li class="nav-item">
+                            <a class="nav-link" routerlink="/" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerlink="/login" routerlinkactive="active" href="/login">Sign in</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" routerlink="/register" routerlinkactive="active"
+                               href="/register">Sign up
+                            </a>
+                        </li>
+                    </ul><!---->
+                </div>
+            </nav>
+        </app-layout-header>
+        <router-outlet></router-outlet>
+        <app-auth-page>
+            <div class="auth-page">
+                <div class="container page">
+                    <div class="row">
+                        <div class="col-md-6 offset-md-3 col-xs-12">
+                            <h1 class="text-xs-center">Sign up</h1>
+                            <p class="text-xs-center"><!---->
+                                <a href="/login">Have an account?</a><!---->
+                            </p>
+                            <app-list-errors><!---->
+                                <ul class="error-messages"><!----></ul>
+                            </app-list-errors>
+                            <form novalidate="" class="ng-dirty ng-touched ng-invalid">
+                                <fieldset>
+                                    <fieldset class="form-group"><!---->
+                                        <input class="form-control form-control-lg ng-untouched ng-pristine ng-valid"
+                                               formcontrolname="username" placeholder="Username" type="text">
+                                    </fieldset>
+                                    <fieldset class="form-group">
+                                        <input class="form-control form-control-lg ng-dirty ng-touched ng-invalid"
+                                               formcontrolname="email" placeholder="Email" type="text">
+                                    </fieldset>
+                                    <fieldset class="form-group">
+                                        <input class="form-control form-control-lg ng-dirty ng-touched ng-invalid"
+                                               formcontrolname="password" placeholder="Password" type="password">
+                                    </fieldset>
+                                    <button class="btn btn-lg btn-primary pull-xs-right" type="submit" disabled="">Sign
+                                        up
+                                    </button>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </app-auth-page>
+    </app-root>
+</body>
+
+
+open home page
+input username
+input email
+input password
+click sign up button
+
+
+headerLogo = cy.get('a.navbar-brand')
+homeLink = cy.get('a.nav-link').contains('Home')
+signInLink = cy.get('a.nav-link').contains('Sign in')
+signUpLink = cy.get('a.nav-link').contains('Sign up')
+pageTitle = cy.get('h1.text-xs-center').contains('Sign up')
+haveAccountLink = cy.get('a').contains('Have an account?')
+usernameField = cy.get('input[formcontrolname="username"]')
+emailField = cy.get('input[formcontrolname="email"]')
+passwordField = cy.get('input[formcontrolname="password"]')
+signupButton = cy.get('button').contains('Sign up')
+

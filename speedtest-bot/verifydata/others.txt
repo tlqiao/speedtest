@@ -1,0 +1,27 @@
+Manula import api info
+
+request
+{"article":{"tagList":["myTag"],"title":"myTitle","description":"myDescription","body":"testDesc"}}
+
+
+response
+{
+    "article": {
+        "slug": "mytitleOne-182586",
+        "title": "mytitleOne",
+        "description": "mytitleAbout",
+        "body": "content",
+        "tagList": [],
+        "createdAt": "2023-08-31T10:17:24.730Z",
+        "updatedAt": "2023-08-31T10:17:24.730Z",
+        "favorited": false,
+        "favoritesCount": 0,
+        "author": {
+            "username": "demotest2",
+            "bio": null,
+            "image": "https://api.realworld.io/images/smiley-cyrus.jpeg",
+            "following": false
+        }
+    }
+}
+

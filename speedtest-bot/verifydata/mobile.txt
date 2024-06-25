@@ -1,0 +1,46 @@
+
+                              </android.view.ViewGroup>
+                              <android.view.ViewGroup index="1" package="com.wdiodemoapp" class="android.view.ViewGroup" text="" content-desc="button-login-container" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[267,479][512,589]" displayed="true">
+                                <android.view.ViewGroup index="0" package="com.wdiodemoapp" class="android.view.ViewGroup" text="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[267,479][512,589]" displayed="true">
+                                  <android.widget.TextView index="0" package="com.wdiodemoapp" class="android.widget.TextView" text="Login" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[308,490][471,578]" displayed="true" />
+                                </android.view.ViewGroup>
+                              </android.view.ViewGroup>
+                              <android.view.ViewGroup index="2" package="com.wdiodemoapp" class="android.view.ViewGroup" text="" content-desc="button-sign-up-container" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[513,479][813,589]" displayed="true">
+                                <android.view.ViewGroup index="0" package="com.wdiodemoapp" class="android.view.ViewGroup" text="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[513,479][813,589]" displayed="true">
+                                  <android.widget.TextView index="0" package="com.wdiodemoapp" class="android.widget.TextView" text="Sign up" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[554,490][771,578]" displayed="true" />
+                                </android.view.ViewGroup>
+                              </android.view.ViewGroup>
+                              <android.view.ViewGroup index="3" package="com.wdiodemoapp" class="android.view.ViewGroup" text="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[41,644][1039,1676]" displayed="true">
+                                <android.view.ViewGroup index="0" package="com.wdiodemoapp" class="android.view.ViewGroup" text="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[83,746][998,882]" displayed="true">
+                                  <android.widget.TextView index="0" package="com.wdiodemoapp" class="android.widget.TextView" text="&#983536;" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[83,778][152,849]" displayed="true" />
+                                  <android.widget.EditText index="1" package="com.wdiodemoapp" class="android.widget.EditText" text="Email" content-desc="input-email" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" long-clickable="true" password="false" scrollable="false" selected="false" bounds="[191,746][998,879]" displayed="true" hint="Email" />
+                                </android.view.ViewGroup>
+                                <android.widget.TextView index="1" package="com.wdiodemoapp" class="android.widget.TextView" text="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[96,896][984,940]" displayed="true" />
+                                <android.view.ViewGroup index="2" package="com.wdiodemoapp" class="android.view.ViewGroup" text="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[83,997][998,1132]" displayed="true">
+                                  <android.widget.TextView index="0" package="com.wdiodemoapp" class="android.widget.TextView" text="&#983873;" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[83,1029][152,1100]" displayed="true" />
+                                  <android.widget.EditText index="1" package="com.wdiodemoapp" class="android.widget.EditText" text="Password" content-desc="input-password" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" long-clickable="true" password="true" scrollable="false" selected="false" bounds="[191,997][998,1130]" displayed="true" hint="Password" />
+                                </android.view.ViewGroup>
+                                <android.widget.TextView index="3" package="com.wdiodemoapp" class="android.widget.TextView" text="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[96,1147][984,1191]" displayed="true" />
+                                <android.widget.TextView index="4" package="com.wdiodemoapp" class="android.widget.TextView" text="When the device has Touch/FaceID (iOS) or FingerPrint enabled a biometrics button will be shown to use and test the login." checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[55,1204][1024,1349]" displayed="true" />
+                                <android.view.ViewGroup index="5" package="com.wdiodemoapp" class="android.view.ViewGroup" text="" content-desc="button-LOGIN" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[265,1437][815,1574]" displayed="true">
+                                  <android.view.ViewGroup index="0" package="com.wdiodemoapp" class="android.view.ViewGroup" text="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[279,1451][801,1561]" displayed="true">
+                                    <android.widget.TextView index="0" package="com.wdiodemoapp" class="android.widget.TextView" text="LOGIN" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[477,1477][603,1536]" displayed="true" />
+                                  </android.view.ViewGroup>
+                                </android.view.ViewGroup>
+                              </android.view.ViewGroup>
+                             
+
+
+input email
+input password
+click login button
+
+
+
+                        const loginButton = await $('android=content-desc("button-login-container")')
+const signUpButton = await $('android=content-desc("button-sign-up-container")')
+const emailField = await $('android=content-desc("input-email")')
+const passwordField = await $('android=content-desc("input-password")')
+const loginButton = await $('android=content-desc("button-LOGIN")')
+
+

@@ -1,0 +1,8 @@
+.vscode
+.idea
+node_modules
+out/
+src/
+tsconfig.json
+tsconfig.extension.json
+webpack.config.js

@@ -1,0 +1,32 @@
+{
+        "compilerOptions": {
+                "module": "commonjs",
+                "target": "es6",
+                "outDir": "build",
+                "skipLibCheck": true,
+                "esModuleInterop": true,
+                "lib": [
+                        "ES2020"
+                ],
+                "sourceMap": false,
+                "rootDir": ".",
+                "strict": true, /* enable all strict type-checking options */
+                "noImplicitReturns": true, /* Report error when not all code paths in function return a value. */
+                "noFallthroughCasesInSwitch": true, /* Report errors for fallthrough cases in switch statement. */
+                "noUnusedParameters": true, /* Report errors on unused parameters. */
+                "types": [
+                        "node"
+                ],
+        },
+        "include": [
+                "extension-src/*.ts",
+                "extension-src/**/*.ts"
+        ],
+        "exclude": [
+                "src",
+                "node_modules",
+                ".vscode-test",
+                "app",
+                "out"
+        ]
+}

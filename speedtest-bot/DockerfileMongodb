@@ -1,0 +1,8 @@
+FROM mongo:latest
+
+# Set environment variables for MongoDB
+ENV MONGO_DATABASE=speedtest
+
+EXPOSE 27017
+
+CMD ["mongod"]

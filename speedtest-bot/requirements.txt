@@ -1,0 +1,11 @@
+langchain
+openai
+gradio
+pymongo
+chromadb
+litellm
+zhipuai
+langchain-openai
+langchain-community
+Flask-Cors
+Flask

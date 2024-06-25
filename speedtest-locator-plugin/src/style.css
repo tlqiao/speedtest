@@ -1,0 +1,103 @@
+/* styles.css */
+.flex-container {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+}
+
+.flex-item {
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+}
+
+textarea {
+        padding: 4px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 12px;
+}
+
+button {
+        position: relative;
+        /* Needed to position the spinner */
+        padding: 8px 20px;
+        /* Adjust padding to make room for spinner */
+        overflow: hidden;
+        background-color: #634F7D;
+        color: white;
+        cursor: pointer;
+        font-size: 14px;
+        padding: 4px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+}
+
+button:hover {
+        background-color: green;
+}
+
+button:disabled {
+        background-color: #ccc;
+}
+
+.spinner {
+        display: inline-block;
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        border-top-color: green;
+        /* Blue spinner */
+        border-radius: 50%;
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -10px;
+        /* Offset by half the height */
+        margin-left: -10px;
+        /* Offset by half the width */
+        animation: spin 1s linear infinite;
+}
+
+.spinner[hidden] {
+        display: none;
+}
+
+@keyframes spin {
+        100% {
+                transform: rotate(360deg);
+        }
+}
+
+.little-button {
+        background-color: #634F7D;
+        color: white;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        font-size: 10px;
+}
+
+.little-button:hover {
+        background-color: green;
+}
+
+textarea {
+        resize: none;
+        overflow: auto;
+        background-color: #EDF1F3;
+}
+
+.textarea-wrapper {
+        position: relative;
+        width: 100%;
+}
+
+/* Style for buttons */
+.textarea-buttons {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        margin-top: 3px;
+}

@@ -1,0 +1,138 @@
+{
+  "name": "autotest",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "vscode": "^1.87.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./build/extension-src/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "speedtest",
+          "title": "SpeedTest",
+          "icon": "./static/bot.png"
+        }
+      ]
+    },
+    "views": {
+      "speedtest": [
+        {
+          "type": "webview",
+          "id": "speedTestSidebar",
+          "name": "SpeedTestSidebar"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "speedtest.uitest",
+        "title": "UITest"
+      },
+      {
+        "command": "speedtest.apitest",
+        "title": "APITest"
+      }
+    ],
+    "submenus": [
+      {
+        "id": "speedtest.submenu",
+        "label": "SpeedTest"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "submenu": "speedtest.submenu",
+          "group": "speedtest"
+        }
+      ],
+      "speedtest.submenu": [
+        {
+          "command": "speedtest.uitest"
+        },
+        {
+          "command": "speedtest.apitest"
+        }
+      ]
+    }
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/jest": "^23.3.13",
+    "@types/lodash": "^4.14.191",
+    "@types/mocha": "^8.0.4",
+    "@types/node": "^12.11.7",
+    "@types/react": "^18.2.65",
+    "@types/react-dom": "^18.2.22",
+    "@types/react-syntax-highlighter": "^15.5.6",
+    "@types/vscode": "^1.86.0",
+    "css-loader": "^5.0.1",
+    "glob": "^7.1.6",
+    "mocha": "^10.4.0",
+    "nodemon": "^3.0.3",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.8.4",
+    "rewire": "^6.0.0",
+    "style-loader": "^2.0.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.4.5",
+    "vscode-test": "^1.4.1",
+    "web-vitals": "^3.5.2",
+    "webpack": "^5.90.1",
+    "webpack-cli": "^4.5.0"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.3.7",
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.15.6",
+    "antd": "^5.17.4",
+    "axios": "^1.6.0",
+    "form-data": "^4.0.0",
+    "lodash": "^4.17.21",
+    "onchange": "^7.1.0",
+    "openai": "^4.47.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-markdown": "^8.0.7",
+    "react-scripts": "^5.0.1",
+    "react-syntax-highlighter": "^15.5.0",
+    "react-use-pagination": "^2.0.1",
+    "recoil": "^0.7.7",
+    "recoil-persist": "^5.1.0",
+    "remark-gfm": "^3.0.1",
+    "rusty-result-ts": "^0.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test-react": "react-scripts test",
+    "eject": "react-scripts eject",
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "node ./script/build.js && webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
