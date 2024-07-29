@@ -11,3 +11,6 @@ execute command "npm run start", start react app, can debug ui change
 
 # Plugin Screenshot
 ![plugin screenshot](https://github.com/tlqiao/speedtest/blob/main/speedtest-autotest-plugin/static/home.png)
+
+# Showcase
+![here](https://www.bilibili.com/video/BV1ky411i7qD/?vd_source=3ded1b3c4a48f2c92f768cd60a0bb913)
