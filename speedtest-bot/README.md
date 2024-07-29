@@ -34,7 +34,7 @@
 python ./server.py
 
 ### APP page 
-![image](https://github.com/SpeedTest-AI/speedtest-bot/blob/main/static/home.png)
+![image](https://github.com/tlqiao/speedtest/tree/main/speedtest-bot/static/home.png)
 
 ### How to use the tool to improve test efficiency, see the [video](https://www.bilibili.com/video/BV1zC4y1i7VG/)
 * you can use test data in verifydata folder to try the tool
